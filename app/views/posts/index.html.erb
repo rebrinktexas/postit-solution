@@ -1,3 +1,43 @@
-<h3>Welcome!</h3>
+<h1>Oracle Retail Posts</h1>
 
-<p>This is the Postit template. You've access the PostsController, index action. This is the index template. Find me under app/views/posts folder.</p>
+<br>
+<div>
+<table id="post">
+  <thead>
+  </thead>
+
+  <tbody>
+
+
+    <% @post.each do |post| %>
+      <tr>
+        <td><%= post.title %></td>
+        </tr>
+      <tr>
+        <td><%= post.url %></td>
+        </tr>
+      <tr>
+        <td><%= post.description %></td>
+        </tr>
+    <tr>
+        <td><%= link_to 'edit', edit_post_path(post) %></td>
+        </tr>
+        
+
+    <% end %>
+
+  </tbody>
+
+</table>
+
+<br>
+
+
+
+
+
+
+
+
+
+
