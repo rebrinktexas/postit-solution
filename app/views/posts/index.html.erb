@@ -1,27 +1,24 @@
-<h4>Oracle Retail Posts</h4>
 
-<br>
-<div>
+<h4>Showing all Posts</h4>
+
 <% @post.each do |post| %>
-<div class = 'well span8' >
-
-<p class = 'pull-right'>
-    [<%= link_to 'show this post', post_path(1)%>]
-
-</p>
-<% post.categories.first %>
-
-<em>Title: <%= post.title %><em><br>
-<em>Text : <em>
-<%= post.description %><br>
-<em>URL  : <em>
-<%= post.url %>
-</div>
-
+        <div class='row'>
+                <div class='span8 well'>
+                        <%= render post.categories, obj: @post = post %>
+                        <h4><%= link_to post.title, post.url %></h4>
+                        <p><%= post.description %></p>
+                        <p>
+                                <span class='quiet'>posted by </span><% %>
+                                <small>at <%= post.created_at %></small>
+                        </p>
+                                <small>
+                                        <span>
+                                                <%= link_to "#{post.comments.size} comments", post_path(post) %>
+                                        </span>
+                                </small>
+                </div>
+        </div>
 <% end %>
-
-<br>
-
 
 
 
