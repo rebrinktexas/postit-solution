@@ -1,0 +1,26 @@
+<h4>Show Oracle Retail Posts</h4>
+<p class = 'pull-right'>
+    [<%= link_to 'edit this post', edit_post_path(@post)%>]
+</p>
+
+<p>
+<%= @post.title %>
+<hr>
+<%= @post.description %><br>
+<hr>
+</p>
+
+<%= form_for  [@post, @comment] do |f| %>
+<div class= ‘control-group'>
+<%= f.label :body, 'Leave a comment' %>
+<%= f.text_area :body, rows: 8, class: 'span4'%>
+</div>
+  <%= f.submit "Create comment", class: "btn btn-primary" %>
+  <% end %>
+<br><br>
+<% @post.comments.each do |comment| %>
+<div class = 'well span8' >
+<em>"<%= comment.body %>"<em>
+</div>
+
+<% end %>

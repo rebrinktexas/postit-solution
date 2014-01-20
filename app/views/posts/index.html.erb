@@ -1,34 +1,24 @@
-<h1>Oracle Retail Posts</h1>
+<h4>Oracle Retail Posts</h4>
 
 <br>
 <div>
-<table id="post">
-  <thead>
-  </thead>
+<% @post.each do |post| %>
+<div class = 'well span8' >
 
-  <tbody>
+<p class = 'pull-right'>
+    [<%= link_to 'show this post', post_path(1)%>]
 
+</p>
+<% post.categories.first %>
 
-    <% @post.each do |post| %>
-      <tr>
-        <td><%= post.title %></td>
-        </tr>
-      <tr>
-        <td><%= post.url %></td>
-        </tr>
-      <tr>
-        <td><%= post.description %></td>
-        </tr>
-    <tr>
-        <td><%= link_to 'edit', edit_post_path(post) %></td>
-        </tr>
-        
+<em>Title: <%= post.title %><em><br>
+<em>Text : <em>
+<%= post.description %><br>
+<em>URL  : <em>
+<%= post.url %>
+</div>
 
-    <% end %>
-
-  </tbody>
-
-</table>
+<% end %>
 
 <br>
 

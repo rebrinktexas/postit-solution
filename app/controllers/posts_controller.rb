@@ -7,6 +7,7 @@ class PostsController < ApplicationController
   end
   
   def show
+      @comment = Comment.new
   end
   
   def new
@@ -15,6 +16,8 @@ class PostsController < ApplicationController
   
   def create
       @post=Post.new(post_params)
+      @post.user_id = 1
+      
       if @post.save
              flash[:notice]= "Successful new Post"
           redirect_to posts_path
@@ -29,8 +32,8 @@ class PostsController < ApplicationController
   
   def update
        @post = Post.find(params[:id])
-       @post = Post.update(post_params)
-      if @post.save
+       @post = Post.update(params[:id], post_params)
+       if @post.save
           flash[:notice] = "Successful updated Post"
           redirect_to posts_path
       else
@@ -42,7 +45,7 @@ class PostsController < ApplicationController
 private
 
 def post_params
-    params.require(:post).permit!
+    params.require(:post).permit(:title, :url, :description, category_ids: [])
 end
 
 def set_post

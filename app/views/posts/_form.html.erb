@@ -1,37 +1,30 @@
+<%= render 'shared/errors', obj: @post %>
 
-<br>
 
-<%= form_for @post do |f| %>
-  <% if @post.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@post.errors.count, "error") %> found:</h2>
-      <ul>
-      <% @post.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+
 <div class='well'>
+<%= form_for @post do |f| %>
 
   <div class='control-group'>
-    <%= f.label :title %><br>
+    <%= f.label :title %>
     <%= f.text_field :title %>
   </div>
   <div class='control-group'>
-    <%= f.label :url %><br>
+    <%= f.label :url %>
     <%= f.text_field :url %>
   </div>
   <div class='control-group'>
-    <%= f.label :description %><br>
-    <%= f.text_area :description, rows: 5 %>
+    <%= f.label :description %>
+    <%= f.text_area :description, rows: 8, class: 'span8' %>
   </div>
-</div>
+   <div class='control-group'>
+    <%= f.label "Categories" %>
+   <%= f.collection_check_boxes :category_ids, Category.all, :id, :name do |cb| %>
+   <% cb.label(class: "checkbox inline") {cb.check_box(class: "checkbox") + cb.text} %>
+  <% end %>
+  </div>
 
-  <%= f.submit 'Submit Post', class: 'btn btn-primary' %>
+  <%= f.submit(@post.new_record? ? 'Create Post' : 'Update Post',  class: 'btn btn-primary') %>
 <% end %>
-
-
-<br>
-
+</div>
 
