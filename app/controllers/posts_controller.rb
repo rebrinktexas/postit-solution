@@ -31,7 +31,6 @@ class PostsController < ApplicationController
   end
   
   def update
-       @post = Post.find(params[:id])
        @post = Post.update(params[:id], post_params)
        if @post.save
           flash[:notice] = "Successful updated Post"

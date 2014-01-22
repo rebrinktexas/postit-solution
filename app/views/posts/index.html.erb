@@ -4,17 +4,22 @@
 <% @post.each do |post| %>
         <div class='row'>
                 <div class='span8 well'>
-                        <%= render post.categories, obj: @post = post %>
-                        <h4><%= link_to post.title, post.url %></h4>
+                        <% post.categories.each do|post| %>
+                        <%=  "Category" %>
+                        <% end %><br>
+                        <h4><a href= "http://<%="#{post.url}"%>"> <%="#{post.url}"%> </a></h4>
+                        
+                        <p><%= post.title %></p>
+
                         <p><%= post.description %></p>
                         <p>
                                 <span class='quiet'>posted by </span><% %>
                                 <small>at <%= post.created_at %></small>
                         </p>
                                 <small>
-                                        <span>
-                                                <%= link_to "#{post.comments.size} comments", post_path(post) %>
-                                        </span>
+                                    <span>
+                                    <%= link_to "#{post.comments.size} comments", post_path(post) %>
+                                    </span>
                                 </small>
                 </div>
         </div>
