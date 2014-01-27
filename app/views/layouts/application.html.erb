@@ -12,6 +12,8 @@
     <%= yield(:head) %>
   </head>
   <body>
+  <%=image_tag("Logic_Logo_Green.png")%>
+
     <header>
       <div class="navbar">
         <div class="navbar-inner">
@@ -30,6 +32,7 @@
           </div>
         </div>
         <footer>
+        <%= render "shared/footer" %>
         </footer>
       </div> <!--! end of .container -->
     </div> <!--! end of #main -->

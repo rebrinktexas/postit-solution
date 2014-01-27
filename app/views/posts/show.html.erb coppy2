@@ -1,0 +1,19 @@
+<h4>Show Oracle Retail Posts</h4>
+
+    <%= @post.id %><hr>
+
+<p>
+    <%= @post.title %><hr>
+    <%= @post.description %><br>
+</p>
+
+
+
+
+<% @post.comments.each do |comment| %>
+
+<div class = 'well span8' >
+    <em>"<%= comment.body %>"<em>
+</div>
+
+<% end %>

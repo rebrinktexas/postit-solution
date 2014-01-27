@@ -3,11 +3,13 @@ class PostsController < ApplicationController
     
   
   def index
-      @post=Post.all
+       @post=Post.all
+      end
+
   end
   
   def show
-      @comment = Comment.new
+      @comment=Comment.new
   end
   
   def new
@@ -19,10 +21,10 @@ class PostsController < ApplicationController
       @post.user_id = 1
       
       if @post.save
-             flash[:notice]= "Successful new Post"
+          flash[:notice]= "Successful new Post"
           redirect_to posts_path
       else
-        render :new
+          render :new
       end
       end
   
@@ -36,7 +38,7 @@ class PostsController < ApplicationController
           flash[:notice] = "Successful updated Post"
           redirect_to posts_path
       else
-        render :edit
+          render :edit
       end
       end
 
@@ -45,6 +47,7 @@ private
 
 def post_params
     params.require(:post).permit(:title, :url, :description, category_ids: [])
+
 end
 
 def set_post
@@ -53,4 +56,4 @@ end
 
 
 
-end
+

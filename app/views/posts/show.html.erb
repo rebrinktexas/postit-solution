@@ -1,25 +1,27 @@
-<h4>Show Oracle Retail Posts</h4>
+ <h4>Show Oracle Retail Posts</h4>
 
-<p class = 'pull-right'>[<%= link_to 'edit this post', edit_post_path(@post)%>]
-</p>
+    <%= @post.id %><hr>
+
 <p>
-<%= @post.title %>
-<hr>
-<%= @post.description %><br>
-<hr>
+    <%= @post.title %><hr>
+    <%= @post.description %><br>
 </p>
 
-<%= form_for  [@post, @comment] do |f| %>
+<%= form_for [@post, @comment] do |f| %>
+    <%= render 'shared/errors', obj: @comment %>
+
 <div class= ‘control-group'>
-<%= f.label :body, 'Leave a comment' %>
-<%= f.text_area :body, rows: 8, class: 'span4'%>
+    <%= f.label :body, 'Leave a comment' %>
+    <%= f.text_area :body, rows: 8, class: 'span4'%>
 </div>
-  <%= f.submit "Create comment", class: "btn btn-primary" %>
-  <% end %>
-<br><br>
+    <%= f.submit "Create comment", class: "btn btn-primary" %>
+<% end %><br><br>
+
+
 <% @post.comments.each do |comment| %>
+
 <div class = 'well span8' >
-<em>"<%= comment.body %>"<em>
+    <em>"<%= comment.body %>"<em>
 </div>
 
 <% end %>
